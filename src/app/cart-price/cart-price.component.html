@@ -1,0 +1,22 @@
+<div class="promotion">
+  <label for="promo-code">Have A Promo Code?</label>
+  <input type="text" id="promo-code" /> <button type="button"></button>
+</div>
+
+<div class="summary">
+  <ul>
+    <li>
+      Subtotal <span>{{ Subtotal | currency: "VND" }}</span>
+    </li>
+    <li>
+      Tax <span>{{ Tax | currency: "VND" }}</span>
+    </li>
+    <li class="total">
+      Total <span>{{ Total | currency: "VND" }}</span>
+    </li>
+  </ul>
+</div>
+
+<div class="checkout">
+  <button type="button">Check Out</button>
+</div>
