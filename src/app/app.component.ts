@@ -11,16 +11,25 @@ export class AppComponent implements OnInit {
   title = "shopping-cart";
   numberItems: number = 0;
   products: Product[];
+  Subtotal: number = 0;
+  Tax: number = 0;
+  Total: number = 0;
   constructor(public productService: ProductService) {}
   ngOnInit() {
     this.products = this.productService.getProduct();
+    this.getBill();
   }
-
-  Subtotal: number = 8000000;
-  Tax: number = 800000;
-  Total: number = 8800000;
+  getBill() {
+    this.products.forEach(element => {
+      this.Subtotal += element.price * element.quantity;
+    });
+    this.Tax = (this.Subtotal * 10) / 100;
+    this.Total = this.Tax + this.Subtotal;
+  }
   handleApplyPromoCode(ev) {
-    alert(ev);
+    ev == "muathu"
+      ? alert("Nhập mã giảm giá thành công")
+      : alert("Mã giảm giá không tồn tại");
   }
 
   onChangeQuantityHandler(event) {
