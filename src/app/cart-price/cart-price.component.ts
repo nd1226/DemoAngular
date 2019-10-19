@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
   selector: "app-cart-price",
@@ -7,8 +7,14 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class CartPriceComponent {
   promoCode: any;
-  
+
   @Input() Subtotal: number;
   @Input() Tax: number;
   @Input() Total: number;
+
+  @Output() onApplyPromoCode = new EventEmitter();
+
+  applyPromoCode() {
+    this.onApplyPromoCode.emit(this.promoCode);
+  }
 }

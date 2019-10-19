@@ -1,14 +1,20 @@
 <main>
   <header class="container">
-    <app-cart-header [numberItems]="products.length"></app-cart-header>
+    <app-cart-header [numberItems]="numberItems"></app-cart-header>
   </header>
 
   <section class="container">
-    <app-cart-body [products]="products"></app-cart-body>
+    <app-cart-body [products]="products" (onChangeQuantity)="onChangeQuantityHandler($event)"></app-cart-body>
   </section>
 
   <section class="container">
-    <app-cart-price [Subtotal] = "Subtotal" [Tax]="Tax" [Total]="Total"></app-cart-price>
+    <app-cart-price 
+    [Subtotal] = "Subtotal" 
+    [Tax]="Tax" 
+    [Total]="Total"
+    (onApplyPromoCode)="handleApplyPromoCode($event)"
+    >
+    </app-cart-price>
   </section>
 </main>
 <router-outlet></router-outlet>
